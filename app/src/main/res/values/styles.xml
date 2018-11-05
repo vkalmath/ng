@@ -1,0 +1,106 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Base application theme. -->
+    <!--<style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">-->
+    <!--&lt;!&ndash; Customize your theme here. &ndash;&gt;-->
+    <!--<item name="colorPrimary">@color/colorPrimary</item>-->
+    <!--<item name="colorPrimaryDark">@color/colorPrimaryDark</item>-->
+    <!--<item name="colorAccent">@color/colorAccent</item>-->
+    <!--</style>-->
+
+    <style name="NayaGadiGeneral" parent="Theme.AppCompat.Light">
+        <item name="colorPrimary">@color/primaryColor</item>
+        <item name="colorPrimaryDark">@color/primaryDarkColor</item>
+        <item name="android:textColorHint">@color/colorWhite</item>
+        <item name="colorControlActivated">@color/colorBlue</item>
+        <item name="colorControlHighlight">@color/colorWhite</item>
+        <item name="actionMenuTextColor">@color/colorWhite</item>
+        <item name="colorControlNormal">@color/colorWhite</item>
+        <item name="android:statusBarColor" tools:targetApi="lollipop">@color/primaryDarkColor</item>
+    </style>
+
+    <!--<style name="SplashTheme" parent="NayaGadiGeneral">-->
+    <!--<item name="android:windowBackground">@drawable/splash_view</item>-->
+    <!--</style>-->
+
+    <style name="BalanceTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorAccent">@color/colorBlue</item>
+        <item name="android:textColorHint">@color/colorLightLightGray</item>
+        <item name="colorControlActivated">@color/colorBlue</item>
+        <item name="colorControlHighlight">@color/colorLightLightGray</item>
+        <item name="actionMenuTextColor">@color/colorWhite</item>
+        <item name="colorControlNormal">@color/colorWhite</item>
+        <item name="android:textColorPrimary">@color/secondaryTextColor</item>
+        <item name="android:textColorSecondary">@color/text_color_secondary</item>
+        <item name="android:textColorSecondaryInverse">@color/secondary_text_material_dark</item>
+        <item name="android:colorForeground">@color/btn_primary</item>
+    </style>
+
+    <style name="BlueLinkInText" parent="Theme.AppCompat">
+        <item name="android:textColorLink">@color/colorDarkBlue</item>
+        <item name="android:textColorLinkInverse">@color/colorLightGray</item>
+    </style>
+
+    <style name="EditTextLogin" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorAccent">@color/colorMediumGray</item>
+        <item name="android:textColorHint">@color/colorMediumGray</item>
+        <item name="colorControlNormal">@color/colorMediumGray</item>
+        <item name="colorControlActivated">@color/colorMediumGray</item>
+        <item name="colorControlHighlight">@color/colorMediumGray</item>
+        <item name="android:textSize">13sp</item>
+    </style>
+
+    <style name="EditTextBlue" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorAccent">@color/colorMediumGray</item>
+        <item name="android:textColorHint">@color/colorMediumGray</item>
+        <item name="colorControlNormal">@color/colorMediumGray</item>
+        <item name="colorControlActivated">@color/colorLightBlue</item>
+        <item name="colorControlHighlight">@color/colorMediumGray</item>
+    </style>
+
+    <style name="DialogSimple" parent="Theme.AppCompat.Light.Dialog">
+        <item name="android:background">@drawable/round_corners_view</item>
+        <item name="android:backgroundDimEnabled">true</item>
+    </style>
+
+    <style name="DialogBalance" parent="Theme.AppCompat.Light.Dialog">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@color/colorTransparent</item>
+        <item name="android:background">@color/colorTransparent</item>
+        <item name="android:backgroundDimEnabled">false</item>
+    </style>
+
+    <style name="DialogPromotions" parent="Base.Theme.AppCompat.Light.Dialog">
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:statusBarColor" tools:targetApi="lollipop">@color/colorBlue</item>
+    </style>
+
+    <style name="error_appearance" parent="@android:style/TextAppearance">
+        <item name="android:textColor">@color/colorRed</item>
+        <item name="android:textSize">13sp</item>
+        <!--<item name="android:fontFamily">@font/bogle_regular</item>-->
+    </style>
+
+    <style name="nayagadi_button_normal" parent="NayaGadiGeneral">
+        <item name="android:layout_width">@dimen/button_min_width</item>
+        <item name="android:layout_height">@dimen/button_min_height</item>
+        <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:textSize">23sp</item>
+        <item name="android:background">@drawable/round_chip_blue</item>
+    </style>
+
+    <style name="nayagadi_button_tranparent" parent="NayaGadiGeneral">
+        <item name="android:layout_width">@dimen/button_min_width</item>
+        <item name="android:layout_height">@dimen/button_min_height</item>
+        <item name="android:background">@null</item>
+        <item name="android:textColor">@color/colorBlue</item>
+        <item name="android:textSize">23sp</item>
+    </style>
+
+
+    <dimen name="button_min_width">333dp</dimen>
+    <dimen name="button_min_height">48dp</dimen>
+</resources>

@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Nayagadi</string>
+    <string name="create_account">Create Account</string>
+    <string name="signin">Signin</string>
+    <string name="create_agent_account">Not an Nayagadi Agent? No Problem.</string>
+    <string name="agent_details">Become Nayagadi Agent by creating an account with your the personal Information like Name, Phone Number and Address</string>
+    <string name="agent_lead">Find a Lead in your Locatlity.</string>
+    <string name="agent_lead_info">Refer a potential customer\'s by providing Name, Phone number and interested vehicle on Nayagadi App. Nayagadi will follow up with customer and assist vehicle purchase.</string>
+    <string name="agent_reward">Whats in it for you?</string>
+    <string name="agent_reward_info">If customer referred bby you makes the vehicle purchase through Nayagadi, you will get the reward money to your ank account. Its that simple.</string>
+
+</resources>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="primaryColor">#ef5350</color>
+    <color name="primaryLightColor">#ff867c</color>
+    <color name="primaryDarkColor">#b61827</color>
+    <color name="secondaryColor">#c4c4c4</color>
+    <color name="secondaryLightColor">#f7f7f7</color>
+    <color name="secondaryDarkColor">#949494</color>
+    <color name="primaryTextColor">#ffffff</color>
+    <color name="secondaryTextColor">#000000</color>
+
+    <color name="colorTransparent">#00000000</color>
+    <color name="colorBlack">#000000</color>
+    <color name="colorBlackBackground">#C0000000</color>
+    <color name="colorGreyishBackground">#C0CCCCCC</color>
+    <color name="colorDarkGray">#4A4A4A</color>
+    <color name="colorDarkMedium">#CC000000</color>
+    <color name="colorMildlyTransparentGray">#E64A4A4A</color>
+    <color name="colorTransparentDarkScan">#994A4A4A</color>
+    <color name="colorTransparentBlack">#80000000</color>
+    <color name="colorMediumGray">#A8ACB4</color>
+    <color name="colorTransparentDarkGray">#4C000000</color>
+    <color name="colorGray">#F5F5F5</color>
+    <color name="colorLightGray">#E5E5E5</color>
+    <color name="colorLightLightGray">#19000000</color>
+    <color name="colorTransparentGray">#994A4A4A</color>
+    <color name="colorFadedGray">#664A4A4A</color>
+    <color name="colorInactiveGray">#0C000000</color>
+    <color name="colorTransparentBackgroundGray">#48000000</color>
+    <color name="colorTransparentRoundedGray">#73ffffff</color>
+    <color name="colorWhite">#FFFFFF</color>
+    <color name="colorInactiveWhite">#80FFFFFF</color>
+    <color name="colorSelectedBlue">#007ABE</color>
+    <color name="colorDarkBlue">#017ADB</color>
+    <color name="colorBlue">#42a5f5</color>
+    <color name="colorLightBlue">#3398E6</color>
+    <color name="colorLightLightBlue">#80C7EF</color>
+    <color name="colorDarkGreen">#84BD41</color>
+    <color name="colorGreen">#A4DA65</color>
+    <color name="colorLightGreen">#C3E469</color>
+    <color name="colorRed">#ED0000</color>
+    <color name="colorRedPurple">#E5338D</color>
+    <color name="colorLightRed">#FFF0F0</color>
+    <color name="colorOrange">#F5A623</color>
+    <color name="colorLightOrange">#FFC935</color>
+    <color name="primary_material_light">#ef5350</color>
+    <color name="primary_dark_material_light">#b61827</color>
+    <color name="text_color_primary">#a09d9d</color>
+    <color name="text_color_secondary">#b6000000</color>
+    <color name="secondary_text_material_dark">#2cffffff</color>
+
+    <!--text colors-->
+    <item name="text_disabled" type="color">#ffa5a9a5</item>
+    <item name="btn_text_default" type="color">#0e0e0e</item>
+    <item name="btn_text_white" type="color">#fdfdfd</item>
+
+    <item name="btn_default_border" type="color">#00000000</item>
+
+    <!--active button state colors-->
+    <item name="btn_default" type="color">#00ffffff</item>
+    <item name="btn_primary" type="color">#428bca</item>
+    <item name="btn_success" type="color">#5cb85c</item>
+    <item name="btn_info" type="color">#5bc0de</item>
+    <item name="btn_warning" type="color">#f0ad4e</item>
+    <item name="btn_danger" type="color">#d9534f</item>
+
+    <!--pressed button state colors-->
+    <item name="btn_default_pressed" type="color">#22000000</item>
+    <item name="btn_primary_pressed" type="color">#ff4277b6</item>
+    <item name="btn_success_pressed" type="color">#ff509f50</item>
+    <item name="btn_info_pressed" type="color">#ff5995b2</item>
+    <item name="btn_warning_pressed" type="color">#ffc17e4e</item>
+    <item name="btn_danger_pressed" type="color">#ffae524e</item>
+
+    <!--inactive button state colors-->
+    <item name="btn_default_inactive" type="color">#2c000000</item>
+    <item name="btn_primary_inactive" type="color">#82b1da</item>
+    <item name="btn_success_inactive" type="color">#93ce93</item>
+    <item name="btn_info_inactive" type="color">#92d3e7</item>
+    <item name="btn_warning_inactive" type="color">#f3c584</item>
+    <item name="btn_danger_inactive" type="color">#e38784</item>
+
+</resources>
