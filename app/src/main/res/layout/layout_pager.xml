@@ -9,11 +9,9 @@
     <ImageView
         android:id="@+id/onboarding_image"
         android:layout_width="wrap_content"
-        android:layout_height="180dp"
+        android:layout_height="225dp"
         android:layout_marginTop="42dp"
-        android:layout_marginBottom="42dp"
         android:src="@drawable/account_creation"
-        app:layout_constraintBottom_toTopOf="@+id/onboarding_title"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -22,35 +20,40 @@
         android:id="@+id/onboarding_title"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="32dp"
         android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="32dp"
         android:fontFamily="@font/bogle_bold"
         android:gravity="center_horizontal"
         android:lineSpacingExtra="7sp"
         android:text="@string/create_agent_account"
         android:textColor="@color/colorBlue"
         android:textSize="22sp"
-        app:layout_constraintBottom_toTopOf="@+id/onboarding_body"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/onboarding_image" />
 
     <TextView
         android:id="@+id/onboarding_body"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:layout_marginEnd="32dp"
         android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="16dp"
         android:fontFamily="@font/bogle_regular"
         android:gravity="center_horizontal"
         android:lineSpacingExtra="3sp"
+        android:lines="4"
         android:text="@string/agent_details"
         android:textColor="@color/colorDarkGray"
         android:textSize="14sp"
-        android:lines="4"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/onboarding_title"
+        app:layout_constraintVertical_bias="0.082" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

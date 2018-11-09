@@ -10,12 +10,12 @@
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/tutorial_pager"
         android:layout_width="match_parent"
-        android:layout_height="489dp"
+        android:layout_height="458dp"
         android:layout_marginBottom="8dp"
         android:background="@color/colorLightGray"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/pageIndicatorView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0">
@@ -24,49 +24,45 @@
 
     <com.rd.PageIndicatorView
         android:id="@+id/pageIndicatorView"
-        attrs:piv_padding="6dp"
-        attrs:piv_radius="4dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/btn_create_account"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tutorial_pager"
         app:piv_animationType="scale"
         app:piv_dynamicCount="true"
         app:piv_interactiveAnimation="true"
         app:piv_selectedColor="@color/colorDarkBlue"
         app:piv_unselectedColor="@color/colorLightBlue"
-        app:piv_viewPager="@id/tutorial_pager" />
+        app:piv_viewPager="@id/tutorial_pager"
+        attrs:piv_padding="6dp"
+        attrs:piv_radius="4dp" />
 
     <Button
         android:id="@+id/btn_create_account"
         style="@style/nayagadi_button_normal"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="16dp"
         android:text="@string/create_account"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/btn_login"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pageIndicatorView"
-        app:layout_constraintVertical_bias="0.19" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/btn_login"
         style="@style/nayagadi_button_tranparent"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:text="@string/signin"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_create_account" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
