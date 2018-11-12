@@ -11,6 +11,7 @@
     <style name="NayaGadiGeneral" parent="Theme.AppCompat.Light">
         <item name="colorPrimary">@color/primaryColor</item>
         <item name="colorPrimaryDark">@color/primaryDarkColor</item>
+        <item name="android:textColor">@color/colorWhite</item>
         <item name="android:textColorHint">@color/colorWhite</item>
         <item name="colorControlActivated">@color/colorBlue</item>
         <item name="colorControlHighlight">@color/colorWhite</item>
@@ -85,7 +86,7 @@
     </style>
 
     <style name="nayagadi_button_normal" parent="NayaGadiGeneral">
-        <item name="android:layout_width">@dimen/button_min_width</item>
+        <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">@dimen/button_min_height</item>
         <item name="android:textColor">@color/colorWhite</item>
         <item name="android:textSize">23sp</item>
@@ -93,7 +94,7 @@
     </style>
 
     <style name="nayagadi_button_tranparent" parent="NayaGadiGeneral">
-        <item name="android:layout_width">@dimen/button_min_width</item>
+        <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">@dimen/button_min_height</item>
         <item name="android:background">@null</item>
         <item name="android:textColor">@color/colorBlue</item>
@@ -102,5 +103,5 @@
 
 
     <dimen name="button_min_width">333dp</dimen>
-    <dimen name="button_min_height">48dp</dimen>
+    <dimen name="button_min_height">40dp</dimen>
 </resources>

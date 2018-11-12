@@ -12,14 +12,8 @@ abstract class BaseActivity : AppCompatActivity() {
 
         setContentView(getLayoutId())
 
-        val actionbar = findViewById<View>(getActionBarId())
-
-        actionbar?.let {
-            setSupportActionBar(it as Toolbar)
-        }
     }
 
-    abstract fun getActionBarId(): Int
 
     abstract fun getLayoutId(): Int
 }

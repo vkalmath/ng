@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "200317378019",
+    "firebase_url": "https://nayagadi-8fa6c.firebaseio.com",
+    "project_id": "nayagadi-8fa6c",
+    "storage_bucket": "nayagadi-8fa6c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:200317378019:android:174178015b85c973",
+        "android_client_info": {
+          "package_name": "com.nayagadi.android"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "200317378019-4ng3vjkide0mlumi1vld5qdspgh2gugg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.nayagadi.android",
+            "certificate_hash": "b69ac46d54c9dd472b4a205a9ef3c655de5a9c70"
+          }
+        },
+        {
+          "client_id": "200317378019-dk8rktt6hckshg9ng5hm8revguo7ce59.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAlT57uGWToTJpcXyP2WZF3q2zFksE6lsg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "200317378019-dk8rktt6hckshg9ng5hm8revguo7ce59.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

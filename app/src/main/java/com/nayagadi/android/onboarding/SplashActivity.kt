@@ -1,6 +1,8 @@
 package com.nayagadi.android.onboarding
 
+import android.app.Activity
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import androidx.viewpager.widget.PagerAdapter
 import android.view.View
@@ -12,14 +14,17 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.lifecycle.ViewModelProviders
 import androidx.viewpager.widget.ViewPager
+import com.firebase.ui.auth.AuthUI
+import com.firebase.ui.auth.IdpResponse
+import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_splash.*
 
+private val RC_SIGN_IN = 100
 
 class SplashActivity : BaseActivity() {
 
     lateinit var viewPager: ViewPager
 
-    override fun getActionBarId(): Int = 0
 
     override fun getLayoutId(): Int = R.layout.activity_splash
 
@@ -32,6 +37,41 @@ class SplashActivity : BaseActivity() {
         val onBoardingDetails = onBoardingModel.getOnboardingDetails(this.applicationContext)
 
         tutorial_pager.adapter = customAdapter(this.applicationContext, onBoardingDetails)
+
+        btn_create_account.setOnClickListener {
+            // Choose authentication providers
+            val providers = arrayListOf(
+                    AuthUI.IdpConfig.GoogleBuilder().build()
+                    )
+
+//            // Create and launch sign-in intent
+//            startActivityForResult(
+//                    AuthUI.getInstance()
+//                            .createSignInIntentBuilder()
+//                            .setAvailableProviders(providers)
+//                            .build(),
+//                    RC_SIGN_IN)
+            createAccountActivity(this)
+        }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (requestCode == RC_SIGN_IN) {
+            val response = IdpResponse.fromResultIntent(data)
+
+            if (resultCode == Activity.RESULT_OK) {
+                // Successfully signed in
+                val user = FirebaseAuth.getInstance().currentUser
+                // ...
+            } else {
+                // Sign in failed. If response is null the user canceled the
+                // sign-in flow using the back button. Otherwise check
+                // response.getError().getErrorCode() and handle the error.
+                // ...
+            }
+        }
     }
 
 }

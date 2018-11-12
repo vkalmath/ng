@@ -1,6 +1,7 @@
 package com.nayagadi.android
 
 import android.app.Application
+import com.nayagadi.android.onboarding.OnBoardingModule
 
 class NayagadiApplication : Application() {
 
@@ -12,6 +13,8 @@ class NayagadiApplication : Application() {
         super.onCreate()
 
         appComponent = DaggerAppComponent.builder()
+                .appModule(AppModule(this))
+                .onBoardingModule(OnBoardingModule())
                 .build()
     }
 }

@@ -46,8 +46,8 @@
     <Button
         android:id="@+id/btn_create_account"
         style="@style/nayagadi_button_normal"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
         android:layout_marginBottom="16dp"
         android:text="@string/create_account"
         app:layout_constraintBottom_toTopOf="@+id/btn_login"
@@ -57,8 +57,8 @@
     <Button
         android:id="@+id/btn_login"
         style="@style/nayagadi_button_tranparent"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
         android:layout_marginBottom="8dp"
         android:text="@string/signin"
         app:layout_constraintBottom_toBottomOf="parent"
