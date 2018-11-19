@@ -1,4 +1,7 @@
 package com.nayagadi.android.onboarding
 
-interface OnBoadringScope {
-}
+import javax.inject.Scope
+
+@Scope
+@Retention
+annotation class OnBoardingScope

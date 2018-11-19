@@ -7,40 +7,46 @@
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/edit_email"
+        style="@style/nayagadi_edit_text_login"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="150dp"
+        android:layout_marginTop="48dp"
         android:layout_marginEnd="32dp"
         android:ems="10"
         android:hint="@string/enter_email"
         android:inputType="textEmailAddress"
-        android:textAlignment="viewStart"
-        android:textColorHint="@color/colorDarkGray"
         android:maxLines="1"
         android:singleLine="true"
+        android:textAlignment="viewStart"
+        android:textColor="@color/colorBlack"
+        android:textColorHint="@color/colorLightGray"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/edit_pwd"
+        style="@style/nayagadi_edit_text_login"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="32dp"
+        android:drawableStart="@drawable/password_icon"
         android:ems="10"
         android:hint="@string/enter_passowrd"
         android:inputType="textPassword"
-        android:textColorHint="@color/colorDarkGray"
         android:maxLines="1"
         android:singleLine="true"
+        android:textColor="@color/colorBlack"
+        android:textColorHint="@color/colorLightGray"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edit_email" />
+        app:layout_constraintTop_toBottomOf="@+id/textview_valid_email" />
 
     <Button
         android:id="@+id/btn_create"
@@ -52,18 +58,69 @@
         android:text="@string/create"
         app:layout_constraintBottom_toTopOf="@+id/text_view_t_and_c"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/text_view_t_and_c"
         android:layout_width="0dp"
-        android:layout_height="32dp"
+        android:layout_height="53dp"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="32dp"
         android:text="@string/tandc"
         android:textColor="@color/colorDarkGray"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textview_valid_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="2dp"
+        android:text="@string/valid_email"
+        android:textColor="@color/btn_danger"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edit_email" />
+
+    <TextView
+        android:id="@+id/textview_pwd_valid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="2dp"
+        android:text="@string/valid_pwd"
+        android:textColor="@color/btn_danger"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edit_pwd" />
+
+    <TextView
+        android:id="@+id/textview_error"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        android:textColor="@color/btn_danger"
+        android:textSize="16sp"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textview_pwd_valid" />
+
+    <ProgressBar
+        android:id="@+id/progressar_creation"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="24dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/btn_create"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 

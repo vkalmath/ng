@@ -16,11 +16,15 @@ class CreateAccountRepository(private val auth : FirebaseAuth) {
                             if (task.isSuccessful) {
                                 // Sign in success, update UI with the signed-in user's information
                                 val user = auth.getCurrentUser()
-                                it.onNext(user)
-                                it.onComplete()
+                                user?.let { user ->
+                                    it.onNext(user)
+                                    it.onComplete()
+                                } ?: run {
+                                    it.onError(Throwable("USer does not exit!!"))
+                                }
                             } else {
                                 // If sign in fails, display a message to the user.
-                                it.onError(task.exception)
+                                it.onError(task.exception ?: Throwable("Unknow error"))
                             }
                         }
             }

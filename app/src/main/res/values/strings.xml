@@ -8,10 +8,12 @@
     <string name="agent_lead">Find a Lead in your Locatlity.</string>
     <string name="agent_lead_info">Refer a potential customer\'s by providing Name, Phone number and interested vehicle on Nayagadi App. Nayagadi will follow up with customer and assist vehicle purchase.</string>
     <string name="agent_reward">Whats in it for you?</string>
-    <string name="agent_reward_info">If customer referred bby you makes the vehicle purchase through Nayagadi, you will get the reward money to your ank account. Its that simple.</string>
+    <string name="agent_reward_info">If customer referred by you makes the vehicle purchase through Nayagadi, you will get the reward money to your bank account. Its that simple.</string>
     <string name="email">Email</string>
     <string name="enter_email">Enter Email Id</string>
     <string name="enter_passowrd">Enter Password</string>
-    <string name="tandc">By creating a account you agree to the terms and conditions of Nayagadi.</string>
+    <string name="tandc">By creating an account, you agree that you are over 18 years and have agreed to our Terms and Conditions and Privacy Notice of Nayagadi.</string>
+    <string name="valid_email">Email is invalid</string>
+    <string name="valid_pwd">Password must be atleast 6 characters</string>
 
 </resources>

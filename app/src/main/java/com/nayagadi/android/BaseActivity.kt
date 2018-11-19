@@ -7,10 +7,13 @@ import android.view.View
 
 abstract class BaseActivity : AppCompatActivity() {
 
+    lateinit var nayagadiApplication: NayagadiApplication
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         setContentView(getLayoutId())
+
+        nayagadiApplication = application as NayagadiApplication
 
     }
 
