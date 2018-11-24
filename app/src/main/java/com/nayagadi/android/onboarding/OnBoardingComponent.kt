@@ -6,4 +6,5 @@ import dagger.Subcomponent
 @Subcomponent(modules = [OnBoardingModule::class])
 interface OnBoardingComponent {
     fun inject(accountCreateActivity: AccountCreateActivity)
+    fun inject(accountCreateActivity: AccountDetailsActivity)
 }

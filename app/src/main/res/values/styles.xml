@@ -17,11 +17,11 @@
     </style>
 
     <style name="NayaGadiGeneral" parent="Theme.AppCompat.Light">
-        <item name="colorPrimary">@color/primaryColor</item>
+        <item name="colorPrimary">@color/primaryLightColor</item>
         <item name="colorPrimaryDark">@color/primaryDarkColor</item>
         <item name="android:textColor">@color/colorWhite</item>
         <item name="android:textColorHint">@color/colorWhite</item>
-        <item name="colorControlActivated">@color/colorBlue</item>
+        <item name="colorControlActivated">@color/primaryColor</item>
         <item name="colorControlHighlight">@color/colorWhite</item>
         <item name="actionMenuTextColor">@color/colorWhite</item>
         <item name="colorControlNormal">@color/colorWhite</item>
@@ -34,20 +34,20 @@
     <!--</style>-->
 
     <style name="BalanceTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="colorAccent">@color/colorBlue</item>
+        <item name="colorAccent">@color/primaryLightColor</item>
         <item name="android:textColorHint">@color/colorLightLightGray</item>
-        <item name="colorControlActivated">@color/colorBlue</item>
+        <item name="colorControlActivated">@color/primaryColor</item>
         <item name="colorControlHighlight">@color/colorLightLightGray</item>
         <item name="actionMenuTextColor">@color/colorWhite</item>
         <item name="colorControlNormal">@color/colorWhite</item>
         <item name="android:textColorPrimary">@color/secondaryTextColor</item>
         <item name="android:textColorSecondary">@color/text_color_secondary</item>
         <item name="android:textColorSecondaryInverse">@color/secondary_text_material_dark</item>
-        <item name="android:colorForeground">@color/btn_primary</item>
+        <item name="android:colorForeground">@color/primaryColor</item>
     </style>
 
     <style name="BlueLinkInText" parent="Theme.AppCompat">
-        <item name="android:textColorLink">@color/colorDarkBlue</item>
+        <item name="android:textColorLink">@color/primaryColor</item>
         <item name="android:textColorLinkInverse">@color/colorLightGray</item>
     </style>
 
@@ -64,7 +64,7 @@
         <item name="colorAccent">@color/colorMediumGray</item>
         <item name="android:textColorHint">@color/colorMediumGray</item>
         <item name="colorControlNormal">@color/colorMediumGray</item>
-        <item name="colorControlActivated">@color/colorLightBlue</item>
+        <item name="colorControlActivated">@color/primaryLightColor</item>
         <item name="colorControlHighlight">@color/colorMediumGray</item>
     </style>
 
@@ -85,7 +85,7 @@
         <item name="android:backgroundDimEnabled">true</item>
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowFullscreen">true</item>
-        <item name="android:statusBarColor" tools:targetApi="lollipop">@color/colorBlue</item>
+        <item name="android:statusBarColor" tools:targetApi="lollipop">@color/primaryColor</item>
     </style>
 
     <style name="error_appearance" parent="@android:style/TextAppearance">
@@ -93,19 +93,27 @@
         <item name="android:textSize">13sp</item>
     </style>
 
+    <!--<style name="nayagadi_button_normal" parent="NayaGadiGeneral">-->
+        <!--<item name="android:layout_width">0dp</item>-->
+        <!--<item name="android:layout_height">@dimen/button_min_height</item>-->
+        <!--<item name="android:textColor">@color/colorWhite</item>-->
+        <!--<item name="android:textSize">23sp</item>-->
+        <!--<item name="android:background">@drawable/round_chip_blue</item>-->
+    <!--</style>-->
+
     <style name="nayagadi_button_normal" parent="NayaGadiGeneral">
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">@dimen/button_min_height</item>
         <item name="android:textColor">@color/colorWhite</item>
         <item name="android:textSize">23sp</item>
-        <item name="android:background">@drawable/round_chip_blue</item>
+        <item name="android:background">@drawable/round_chip_red</item>
     </style>
 
     <style name="nayagadi_button_tranparent" parent="NayaGadiGeneral">
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">@dimen/button_min_height</item>
         <item name="android:background">@null</item>
-        <item name="android:textColor">@color/colorBlue</item>
+        <item name="android:textColor">@color/primaryLightColor</item>
         <item name="android:textSize">23sp</item>
     </style>
 
@@ -113,10 +121,20 @@
         <item name="android:textColor">@android:color/white</item>
         <item name="android:textColorHint">@android:color/darker_gray</item>
         <item name="colorControlNormal">@color/colorMediumGray</item>
-        <item name="colorControlActivated">@color/colorLightBlue</item>
+        <item name="colorControlActivated">@color/primaryLightColor</item>
         <item name="colorControlHighlight">@color/colorMediumGray</item>
-        <item name="android:backgroundTint">@color/colorLightBlue</item>
+        <item name="android:backgroundTint">@color/primaryColor</item>
     </style>
+
+    <style name="nayagadi_spinner" parent="Widget.AppCompat.Spinner.Underlined">
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:textColorHint">@color/text_color_primary</item>
+        <item name="colorControlNormal">@color/colorAccent</item>
+        <item name="colorControlActivated">@color/primaryLightColor</item>
+        <item name="colorControlHighlight">@color/primaryColor</item>
+        <item name="android:textColor">@color/primaryLightColor</item>
+    </style>
+
 
     <dimen name="button_min_width">333dp</dimen>
     <dimen name="button_min_height">40dp</dimen>

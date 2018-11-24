@@ -22,6 +22,9 @@ import kotlinx.android.synthetic.main.activity_splash.*
 private val RC_SIGN_IN = 100
 
 class SplashActivity : BaseActivity() {
+    override fun getActionBarTitle(): Int {
+        return -1
+    }
 
     lateinit var viewPager: ViewPager
 
@@ -51,7 +54,9 @@ class SplashActivity : BaseActivity() {
 //                            .setAvailableProviders(providers)
 //                            .build(),
 //                    RC_SIGN_IN)
-            createAccountActivity(this)
+
+//            createAccountActivity(this)
+            createAccountDetailsActivity(this)
         }
     }
 

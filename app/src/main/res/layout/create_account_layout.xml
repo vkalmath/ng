@@ -1,55 +1,89 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/root_layout"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/edit_email"
-        style="@style/nayagadi_edit_text_login"
-        android:layout_width="0dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="48dp"
-        android:layout_marginEnd="32dp"
-        android:ems="10"
-        android:hint="@string/enter_email"
-        android:inputType="textEmailAddress"
-        android:maxLines="1"
-        android:singleLine="true"
-        android:textAlignment="viewStart"
-        android:textColor="@color/colorBlack"
-        android:textColorHint="@color/colorLightGray"
-        android:textSize="20sp"
+    <include
+        android:id="@+id/include_app_bar_profile"
+        layout="@layout/layout_tool_bar"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/edit_pwd"
-        style="@style/nayagadi_edit_text_login"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/email_layout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
-        android:drawableStart="@drawable/password_icon"
-        android:ems="10"
-        android:hint="@string/enter_passowrd"
-        android:inputType="textPassword"
-        android:maxLines="1"
-        android:singleLine="true"
-        android:textColor="@color/colorBlack"
-        android:textColorHint="@color/colorLightGray"
-        android:textSize="20sp"
+        android:textColorHint="@color/primaryLightColor"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textview_valid_email" />
+        app:layout_constraintTop_toBottomOf="@+id/include_app_bar_profile">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edit_email"
+            style="@style/nayagadi_edit_text_login"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:drawablePadding="15dp"
+            android:ems="10"
+            android:hint="@string/enter_email"
+            android:inputType="textEmailAddress"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:textAlignment="viewStart"
+            android:textColor="@color/primaryColor"
+            android:textColorHint="@color/primaryLightColor"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/pwd_layout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="32dp"
+        android:textColorHint="@color/primaryLightColor"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/email_layout">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edit_pwd"
+            style="@style/nayagadi_edit_text_login"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:drawableEnd="@drawable/password_icon"
+            android:ems="10"
+            android:hint="@string/enter_passowrd"
+            android:inputType="textPassword"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:textAlignment="viewStart"
+            android:textColor="@color/primaryColor"
+            android:textColorHint="@color/primaryLightColor"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+             />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
 
     <Button
-        android:id="@+id/btn_create"
+        android:id="@+id/btn_update"
         style="@style/nayagadi_button_normal"
         android:layout_height="40dp"
         android:layout_marginStart="32dp"
@@ -79,23 +113,21 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="2dp"
         android:text="@string/valid_email"
         android:textColor="@color/btn_danger"
         android:textSize="14sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edit_email" />
+        app:layout_constraintTop_toBottomOf="@+id/email_layout" />
 
     <TextView
         android:id="@+id/textview_pwd_valid"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="2dp"
         android:text="@string/valid_pwd"
         android:textColor="@color/btn_danger"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edit_pwd" />
+        app:layout_constraintTop_toBottomOf="@+id/pwd_layout" />
 
     <TextView
         android:id="@+id/textview_error"
@@ -120,8 +152,7 @@
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="24dp"
         android:visibility="invisible"
-        app:layout_constraintBottom_toTopOf="@+id/btn_create"
+        app:layout_constraintBottom_toTopOf="@+id/btn_update"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

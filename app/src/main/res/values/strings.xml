@@ -10,10 +10,32 @@
     <string name="agent_reward">Whats in it for you?</string>
     <string name="agent_reward_info">If customer referred by you makes the vehicle purchase through Nayagadi, you will get the reward money to your bank account. Its that simple.</string>
     <string name="email">Email</string>
-    <string name="enter_email">Enter Email Id</string>
-    <string name="enter_passowrd">Enter Password</string>
+    <string name="enter_email">Email</string>
+    <string name="enter_passowrd">Password</string>
     <string name="tandc">By creating an account, you agree that you are over 18 years and have agreed to our Terms and Conditions and Privacy Notice of Nayagadi.</string>
     <string name="valid_email">Email is invalid</string>
     <string name="valid_pwd">Password must be atleast 6 characters</string>
+    <string name="verfiy_account">Please verify your account by clicking link sent to your email.</string>
+    <string name="verfiy_account_action">Verify</string>
+    <string name="choose_email">Choose Email</string>
+    <string name="account_info">Account Details</string>
+    <string name="back_button">Button to navigate back</string>
+    <string name="enter_last_name">last name</string>
+    <string name="update">Update</string>
+    <string name="valid_fn">first name is not valid</string>
+    <string name="valin_ln">enter valid last name</string>
+    <string name="first_name">First Name</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="valid_phone">Invalid phone number</string>
+    <string name="account_number">Account Number</string>
+    <string name="ifsc_code">IFSC code</string>
+    <string name="valid_account">Invalid account number</string>
+    <string name="valid_ifsc">Invalid IFSC code</string>
+    <string name="invalid_ln">Invalid last name</string>
+    <string name="city">City</string>
+    <string name="valid_city">Invalid city</string>
+    <string name="pin_code">PIN Code</string>
+    <string name="valid_pin_code">Invalid PIN Code</string>
+    <string name="valid_state">Invalid State</string>
 
 </resources>

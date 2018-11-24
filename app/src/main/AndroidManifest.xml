@@ -29,7 +29,8 @@
         android:theme="@style/NayaGadiGeneral">
         <activity
             android:name=".MainActivity"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:theme="@style/BalanceTheme">
 
         </activity>
         <activity
@@ -44,6 +45,11 @@
         <activity
             android:name=".onboarding.AccountCreateActivity"
             android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".onboarding.AccountDetailsActivity"
+            android:screenOrientation="portrait" />
+
     </application>
 
 </manifest>

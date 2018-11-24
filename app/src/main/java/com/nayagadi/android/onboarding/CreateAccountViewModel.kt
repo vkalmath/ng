@@ -8,22 +8,32 @@ import javax.inject.Inject
 import androidx.lifecycle.ViewModelProvider
 
 
-sealed class AccountCreateState(val user: FirebaseUser?, val loading: Boolean = false, val error: Throwable? = null)
+sealed class AccountState(val user: FirebaseUser?, val loading: Boolean = false, val error: Throwable? = null)
 
-class AccountCreateSuccessState(user: FirebaseUser) : AccountCreateState(user)
+class AccountCreateSuccessState(user: FirebaseUser) : AccountState(user)
 
-object AccountCreationLoadingState : AccountCreateState(null, true, null)
+object AccountCreationLoadingState : AccountState(null, true, null)
 
-class AccountCreationErrorState(error: Throwable) : AccountCreateState(null, false, error)
+class AccountCreationErrorState(error: Throwable) : AccountState(null, false, error)
 
 class CreateAccountViewModel(private val repository: CreateAccountRepository): ViewModel() {
 
-    fun createUserWithEmailAndPassword(activity: Activity, email: String, pwd: String) : Observable<AccountCreateState> {
+    fun createUserWithEmailAndPassword(activity: Activity, email: String, pwd: String) : Observable<AccountState> {
         return repository.createUser(activity, email, pwd)
-                .map<AccountCreateState> {
+                .map<AccountState> {
                     AccountCreateSuccessState(it)
                 }
                 .startWith(AccountCreationLoadingState)
+                .onErrorReturn {
+                    AccountCreationErrorState(it)
+                }
+    }
+
+    fun getCurrentUser() : Observable<AccountState> {
+        return repository.getCurrentUser()
+                .map<AccountState> {
+                    AccountCreateSuccessState(it)
+                }
                 .onErrorReturn {
                     AccountCreationErrorState(it)
                 }

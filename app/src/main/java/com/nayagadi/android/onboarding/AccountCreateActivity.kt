@@ -1,16 +1,20 @@
 package com.nayagadi.android.onboarding
 
+import android.content.ActivityNotFoundException
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
-import android.view.View
 import android.widget.Toast
-import androidx.core.content.ContextCompat
+import com.google.android.material.snackbar.Snackbar
 import com.jakewharton.rxbinding3.widget.textChanges
 import com.nayagadi.android.BaseActivity
 import com.nayagadi.android.NayagadiApplication
 import com.nayagadi.android.R
+import com.nayagadi.android.showSnackbar
+import com.nayagadi.android.utils.enable
+import com.nayagadi.android.utils.hide
+import com.nayagadi.android.utils.show
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.observers.ResourceObserver
@@ -20,12 +24,15 @@ import timber.log.Timber
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
+
 fun createAccountActivity(context: Context) {
     val intent = Intent(context, AccountCreateActivity::class.java)
     context.startActivity(intent)
 }
 
 class AccountCreateActivity : BaseActivity() {
+
+    override fun getActionBarTitle() =  R.string.create_account
 
     @Inject
     lateinit var accountViewModelFactory: AccountViewModelFactory
@@ -34,27 +41,40 @@ class AccountCreateActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        supportActionBar?.setTitle(R.string.app_name)
+
 
         nayagadiApplication.createOnBoardingComponent()
         NayagadiApplication.onBoardingComponent?.inject(this)
 
-        btn_create.setOnClickListener {
+        btn_update.setOnClickListener {
             val createAccountViewModel = accountViewModelFactory.create(CreateAccountViewModel::class.java)
 
             createAccountViewModel.createUserWithEmailAndPassword(this, edit_email.text.toString(), edit_pwd.text.toString())
-                    .subscribeWith(object : ResourceObserver<AccountCreateState>() {
+                    .subscribeWith(object : ResourceObserver<AccountState>() {
                         override fun onComplete() {
                             dispose()
                         }
 
-                        override fun onNext(state: AccountCreateState) {
+                        override fun onNext(state: AccountState) {
                             when (state) {
                                 is AccountCreateSuccessState -> {
                                     Timber.e("Firebase USer -> ${state.user}")
                                     Toast.makeText(applicationContext, "Account created successfully!", Toast.LENGTH_LONG)
                                             .show()
-                                    progressar_creation.visibility = View.INVISIBLE
+                                    progressar_creation.hide()
+
+                                    createAccountDetailsActivity(this@AccountCreateActivity)
+                                    finish()
+
+                                    showSnackbar(btn_update, R.string.verfiy_account, Snackbar.LENGTH_INDEFINITE, R.string.verfiy_account_action) {
+                                        val emailLauncher = Intent(Intent.ACTION_VIEW)
+                                        emailLauncher.type = "message/rfc822"
+                                        try {
+                                            startActivity(emailLauncher)
+                                        } catch (e: ActivityNotFoundException) {
+                                            Toast.makeText(applicationContext, "Check you email Inbox and click on the link sen to you to verify the account.", Toast.LENGTH_LONG).show()
+                                        }
+                                    }
                                 }
 
                                 is AccountCreationErrorState -> {
@@ -62,7 +82,7 @@ class AccountCreateActivity : BaseActivity() {
                                 }
 
                                 is AccountCreationLoadingState -> {
-                                    progressar_creation.visibility = View.VISIBLE
+                                    progressar_creation.show()
                                 }
                             }
                         }
@@ -77,9 +97,9 @@ class AccountCreateActivity : BaseActivity() {
 
         edit_email.textChanges()
                 .doOnNext {
-                    textview_valid_email.visibility = View.INVISIBLE
-                    progressar_creation.visibility = View.INVISIBLE
-                    textview_error.visibility = View.INVISIBLE
+                    textview_valid_email.hide()
+                    progressar_creation.hide()
+                    textview_error.hide()
                 }
                 .debounce(2000, TimeUnit.MILLISECONDS)
                 .filter {
@@ -94,9 +114,9 @@ class AccountCreateActivity : BaseActivity() {
 
                     override fun onNext(t: CharSequence) {
                         if (!isValidEmail(t)) {
-                            textview_valid_email.visibility = View.VISIBLE
+                            textview_valid_email.show()
                         } else {
-                            textview_valid_email.visibility = View.INVISIBLE
+                            textview_valid_email.hide()
                         }
                     }
 
@@ -108,9 +128,9 @@ class AccountCreateActivity : BaseActivity() {
 
         edit_pwd.textChanges()
                 .doOnNext {
-                    textview_pwd_valid.visibility = View.INVISIBLE
-                    progressar_creation.visibility = View.INVISIBLE
-                    textview_error.visibility = View.INVISIBLE
+                    textview_pwd_valid.hide()
+                    progressar_creation.hide()
+                    textview_error.hide()
                 }
                 .debounce(2000, TimeUnit.MILLISECONDS)
                 .filter {
@@ -125,9 +145,9 @@ class AccountCreateActivity : BaseActivity() {
 
                     override fun onNext(t: CharSequence) {
                         if (!isValidPwd(t)) {
-                            textview_pwd_valid.visibility = View.VISIBLE
+                            textview_pwd_valid.show()
                         } else {
-                            textview_pwd_valid.visibility = View.INVISIBLE
+                            textview_pwd_valid.hide()
                         }
                     }
 
@@ -152,7 +172,7 @@ class AccountCreateActivity : BaseActivity() {
                     }
 
                     override fun onNext(isValid: Boolean) {
-                        enableCreateButton(isValid)
+                        btn_update.enable(isValid)
                     }
 
                     override fun onError(e: Throwable) {
@@ -165,18 +185,9 @@ class AccountCreateActivity : BaseActivity() {
 
     private fun showError(error: Throwable) {
         Timber.e(error?.localizedMessage)
-        progressar_creation.visibility = View.INVISIBLE
-        textview_error.visibility = View.VISIBLE
+        progressar_creation.hide()
+        textview_error.show()
         textview_error.text = error?.localizedMessage
-    }
-
-    private fun enableCreateButton(isValid: Boolean) {
-        btn_create.isClickable = isValid
-        btn_create.background = if (isValid) {
-            ContextCompat.getDrawable(applicationContext, R.drawable.round_chip_blue)
-        } else {
-            ContextCompat.getDrawable(applicationContext, R.drawable.round_button_gray)
-        }
     }
 
     override fun onDestroy() {
