@@ -37,5 +37,6 @@
     <string name="pin_code">PIN Code</string>
     <string name="valid_pin_code">Invalid PIN Code</string>
     <string name="valid_state">Invalid State</string>
+    <string name="forgot_passowrd">Forgot Password?</string>
 
 </resources>

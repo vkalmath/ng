@@ -4,13 +4,18 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
+import android.widget.Toast
+import com.google.android.material.snackbar.Snackbar
 import com.jakewharton.rxbinding3.widget.textChanges
 import com.nayagadi.android.BaseActivity
 import com.nayagadi.android.NayagadiApplication
 import com.nayagadi.android.R
+import com.nayagadi.android.home.createHomeActivity
+import com.nayagadi.android.showSnackbar
 import com.nayagadi.android.utils.*
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.observers.DisposableObserver
 import io.reactivex.observers.ResourceObserver
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.update_profile_layout.*
@@ -18,12 +23,22 @@ import timber.log.Timber
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
-fun createAccountDetailsActivity(context: Context) {
+
+const val USER_ID = "USER_ID"
+fun createAccountDetailsActivity(context: Context, userId: String) {
     val intent = Intent(context, AccountDetailsActivity::class.java)
+    val bundle = Bundle()
+    bundle.putString(USER_ID, userId)
+    intent.putExtras(bundle)
     context.startActivity(intent)
 }
 
 class AccountDetailsActivity : BaseActivity() {
+    var userId: String? = null
+
+    override fun fetchIntentBundle(intent: Intent) = intent.extras
+
+    override fun showAppBarBackButton() = false
 
     @Inject
     lateinit var accountViewModelFactory: AccountViewModelFactory
@@ -38,7 +53,72 @@ class AccountDetailsActivity : BaseActivity() {
         nayagadiApplication.createOnBoardingComponent()
         NayagadiApplication.onBoardingComponent?.inject(this)
 
-        btn_update.enable(false)
+        showSnackbar(btn_update_profile, R.string.verfiy_account, Snackbar.LENGTH_SHORT, R.string.verfiy_account_action) {
+            val emailLauncher = Intent(Intent.ACTION_VIEW)
+            emailLauncher.type = "message/rfc822"
+            try {
+                startActivity(emailLauncher)
+            } catch (e: Throwable) {
+                Toast.makeText(applicationContext, "Check you email Inbox and click on the link sen to you to verify the account.", Toast.LENGTH_LONG).show()
+            }
+        }
+
+        userId = intentBundle?.getString(USER_ID)
+        Timber.d("userId = ${userId}")
+
+        btn_update_profile.enable(false)
+
+        btn_update_profile.setOnClickListener { it ->
+            val createAccountViewModel = accountViewModelFactory.create(CreateAccountViewModel::class.java)
+
+            val agent = Agent(edit_first_name.text.toString(),
+                    edit_last_name.text.toString(),
+                    edit_phone_number.text.toString(),
+                    edit_account_number.text.toString(),
+                    ifsc_code.text.toString(),
+                    edit_city.text.toString(),
+                    spinner_state.selectedItem.toString(),
+                    edit_pin_code.text.toString())
+            userId?.let {
+                createAccountViewModel.updateProfile(it, agent)
+                        .startWith(ProfileLoadingState)
+                        .subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribeWith(object: DisposableObserver<ProfileState>(){
+                            override fun onComplete() {
+                                progressar_creation.hide()
+                                dispose()
+                            }
+
+                            override fun onNext(state: ProfileState) {
+                                when(state) {
+                                    is ProfileLoadingState -> {
+                                        progressar_creation.show()
+                                    }
+
+                                    is ProfileSuccessState -> {
+                                        progressar_creation.hide()
+                                        Toast.makeText(this@AccountDetailsActivity, "Profile Saved, NAvigate to Home Activity!!",
+                                                Toast.LENGTH_LONG).show()
+                                        //todo: naviagte to home activity
+                                        createHomeActivity(this@AccountDetailsActivity)
+
+                                    }
+                                }
+                            }
+
+                            override fun onError(e: Throwable) {
+                                progressar_creation.hide()
+                                Toast.makeText(this@AccountDetailsActivity,
+                                        "Failed Updating profile with error ${e.localizedMessage}", Toast.LENGTH_LONG).show()
+                            }
+
+                        })
+            } ?: run {
+                Timber.e("userID is null check it properly")
+            }
+
+        }
         hideAllEditTextErrors()
 
         edit_first_name.textChanges()
@@ -266,7 +346,7 @@ class AccountDetailsActivity : BaseActivity() {
                     }
 
                     override fun onNext(isValid: Boolean) {
-                        btn_update.enable(isValid)
+                        btn_update_profile.enable(isValid)
                     }
 
                     override fun onError(e: Throwable) {

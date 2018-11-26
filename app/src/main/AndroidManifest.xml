@@ -19,7 +19,6 @@
     <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
 
     <application
-
         android:name=".NayagadiApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -30,9 +29,7 @@
         <activity
             android:name=".MainActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/BalanceTheme">
-
-        </activity>
+            android:theme="@style/BalanceTheme"></activity>
         <activity
             android:name=".onboarding.SplashActivity"
             android:screenOrientation="portrait">
@@ -45,11 +42,10 @@
         <activity
             android:name=".onboarding.AccountCreateActivity"
             android:screenOrientation="portrait" />
-
         <activity
             android:name=".onboarding.AccountDetailsActivity"
             android:screenOrientation="portrait" />
-
+        <activity android:name=".home.HomeActivity"></activity>
     </application>
 
 </manifest>

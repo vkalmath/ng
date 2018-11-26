@@ -10,8 +10,8 @@
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar_nayagadi"
         android:layout_width="match_parent"
-        android:layout_height="78dp"
-        android:minHeight="78dp"
+        android:layout_height="56dp"
+        android:minHeight="56dp"
         app:contentInsetStart="0dp"
         app:contentInsetEnd="0dp"
         android:paddingStart="0dp"
@@ -26,29 +26,29 @@
                 android:id="@+id/app_bar_back_pressed"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:layout_marginStart="24dp"
+                android:layout_marginStart="8dp"
                 android:background="@color/colorTransparent"
                 android:contentDescription="@string/back_button"
                 android:scaleType="center"
                 android:src="@drawable/back_arrow"
-                app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/app_bar_title"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
-                android:layout_marginStart="12dp"
                 android:gravity="start"
-                android:text="@string/account_info"
                 android:textColor="@color/colorWhite"
                 android:textSize="26sp"
-                app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/app_bar_back_pressed" />
+                app:layout_constraintStart_toEndOf="@+id/app_bar_back_pressed"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="@string/account_info" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -2,6 +2,7 @@ package com.nayagadi.android
 
 import android.app.Application
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.FirebaseDatabase
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
@@ -21,4 +22,8 @@ class AppModule(private var application: NayagadiApplication) {
     @Singleton
     @Provides
     fun provideFireaseAuthInstance() = FirebaseAuth.getInstance()
+
+    @Singleton
+    @Provides
+    fun provideFirebaseDatabaseInstanceRef() = FirebaseDatabase.getInstance().reference
 }

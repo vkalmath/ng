@@ -1,6 +1,5 @@
 package com.nayagadi.android.onboarding
 
-import android.content.ActivityNotFoundException
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -11,8 +10,10 @@ import com.jakewharton.rxbinding3.widget.textChanges
 import com.nayagadi.android.BaseActivity
 import com.nayagadi.android.NayagadiApplication
 import com.nayagadi.android.R
+import com.nayagadi.android.home.createHomeActivity
 import com.nayagadi.android.showSnackbar
 import com.nayagadi.android.utils.enable
+import com.nayagadi.android.utils.gone
 import com.nayagadi.android.utils.hide
 import com.nayagadi.android.utils.show
 import io.reactivex.Observable
@@ -24,24 +25,50 @@ import timber.log.Timber
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
+const val LOGIN_OR_CREATE_ACCOUNT = "LoginOrCreateAccount"
 
-fun createAccountActivity(context: Context) {
+fun createAccountActivity(context: Context, isLogin: Boolean = false) {
     val intent = Intent(context, AccountCreateActivity::class.java)
+    val bundle = Bundle()
+    bundle.putBoolean(LOGIN_OR_CREATE_ACCOUNT, isLogin)
+    intent.putExtras(bundle)
     context.startActivity(intent)
 }
 
-class AccountCreateActivity : BaseActivity() {
 
-    override fun getActionBarTitle() =  R.string.create_account
+
+class AccountCreateActivity() : BaseActivity(){
+    override fun fetchIntentBundle(intent: Intent): Bundle? {
+        return intent.extras
+    }
+
+    fun isLogin(bundle: Bundle?) : Boolean {
+        return bundle?.getBoolean(LOGIN_OR_CREATE_ACCOUNT) ?: false
+    }
+
+    var isLogin: Boolean = false
+
+    override fun getActionBarTitle() : Int {
+        isLogin = isLogin(intentBundle)
+        if(isLogin) {
+            btn_update.text = getString(R.string.signin)
+            btn_forgot_pwd.show()
+            return R.string.signin
+        } else {
+            btn_forgot_pwd.gone()
+            return R.string.create_account
+        }
+    }
 
     @Inject
     lateinit var accountViewModelFactory: AccountViewModelFactory
 
     override fun getLayoutId(): Int = R.layout.create_account_layout
 
+    override fun showAppBarBackButton() = false
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
 
         nayagadiApplication.createOnBoardingComponent()
         NayagadiApplication.onBoardingComponent?.inject(this)
@@ -49,7 +76,12 @@ class AccountCreateActivity : BaseActivity() {
         btn_update.setOnClickListener {
             val createAccountViewModel = accountViewModelFactory.create(CreateAccountViewModel::class.java)
 
-            createAccountViewModel.createUserWithEmailAndPassword(this, edit_email.text.toString(), edit_pwd.text.toString())
+            val observable = if(!isLogin) {
+                createAccountViewModel.createUserWithEmailAndPassword(this, edit_email.text.toString(), edit_pwd.text.toString())
+            } else {
+                createAccountViewModel.loginWithEmailAndPassword(this, edit_email.text.toString(), edit_pwd.text.toString())
+            }
+            observable
                     .subscribeWith(object : ResourceObserver<AccountState>() {
                         override fun onComplete() {
                             dispose()
@@ -57,31 +89,32 @@ class AccountCreateActivity : BaseActivity() {
 
                         override fun onNext(state: AccountState) {
                             when (state) {
-                                is AccountCreateSuccessState -> {
+                                is AccountSuccessState -> {
                                     Timber.e("Firebase USer -> ${state.user}")
                                     Toast.makeText(applicationContext, "Account created successfully!", Toast.LENGTH_LONG)
                                             .show()
                                     progressar_creation.hide()
 
-                                    createAccountDetailsActivity(this@AccountCreateActivity)
-                                    finish()
+                                    if(!isLogin) {
+                                        //todo: storing emailID as key check it later
+                                        createAccountDetailsActivity(this@AccountCreateActivity, state.user?.email!!)
 
-                                    showSnackbar(btn_update, R.string.verfiy_account, Snackbar.LENGTH_INDEFINITE, R.string.verfiy_account_action) {
-                                        val emailLauncher = Intent(Intent.ACTION_VIEW)
-                                        emailLauncher.type = "message/rfc822"
-                                        try {
-                                            startActivity(emailLauncher)
-                                        } catch (e: ActivityNotFoundException) {
-                                            Toast.makeText(applicationContext, "Check you email Inbox and click on the link sen to you to verify the account.", Toast.LENGTH_LONG).show()
-                                        }
+                                        finish()
+                                    } else {
+                                        Toast.makeText(this@AccountCreateActivity, "Lauch Home activity", Toast.LENGTH_LONG).show()
+                                        //todo: naviagte to home activity
+                                        createHomeActivity(this@AccountCreateActivity)
+                                        finish()
                                     }
+
+
                                 }
 
-                                is AccountCreationErrorState -> {
+                                is AccountErrorState -> {
                                     showError(state.error ?: Throwable("Empty error!!"))
                                 }
 
-                                is AccountCreationLoadingState -> {
+                                is AccountLoadingState -> {
                                     progressar_creation.show()
                                 }
                             }
@@ -93,6 +126,10 @@ class AccountCreateActivity : BaseActivity() {
                         }
 
                     })
+        }
+
+        btn_forgot_pwd.setOnClickListener {
+            Toast.makeText(this, "Launch PAssowrd forgot activity", Toast.LENGTH_LONG).show()
         }
 
         edit_email.textChanges()
@@ -184,10 +221,10 @@ class AccountCreateActivity : BaseActivity() {
     }
 
     private fun showError(error: Throwable) {
-        Timber.e(error?.localizedMessage)
+        Timber.e(error.localizedMessage)
         progressar_creation.hide()
         textview_error.show()
-        textview_error.text = error?.localizedMessage
+        textview_error.text = error.localizedMessage
     }
 
     override fun onDestroy() {

@@ -1,6 +1,7 @@
 package com.nayagadi.android.onboarding
 
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DatabaseReference
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
@@ -9,12 +10,12 @@ import javax.inject.Singleton
 class OnBoardingModule {
 
     @Provides
-    fun provideCreateAccountRepository(auth: FirebaseAuth) : CreateAccountRepository{
-        return CreateAccountRepository(auth)
+    fun provideCreateAccountRepository(auth: FirebaseAuth, databaseRef: DatabaseReference): CreateAccountRepository {
+        return CreateAccountRepository(auth, databaseRef)
     }
 
     @Provides
-    fun provideAccountModelFactory(repository: CreateAccountRepository) : AccountViewModelFactory {
+    fun provideAccountModelFactory(repository: CreateAccountRepository): AccountViewModelFactory {
         return AccountViewModelFactory(repository)
     }
 

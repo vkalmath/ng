@@ -114,7 +114,7 @@
         <item name="android:layout_height">@dimen/button_min_height</item>
         <item name="android:background">@null</item>
         <item name="android:textColor">@color/primaryLightColor</item>
-        <item name="android:textSize">23sp</item>
+        <item name="android:textSize">18sp</item>
     </style>
 
     <style name="nayagadi_edit_text_login" parent="Widget.AppCompat.EditText">

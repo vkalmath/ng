@@ -12,6 +12,7 @@ import com.nayagadi.android.R
 import android.view.LayoutInflater
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProviders
 import androidx.viewpager.widget.ViewPager
 import com.firebase.ui.auth.AuthUI
@@ -26,8 +27,7 @@ class SplashActivity : BaseActivity() {
         return -1
     }
 
-    lateinit var viewPager: ViewPager
-
+    override fun fetchIntentBundle(intent: Intent) = intent.extras
 
     override fun getLayoutId(): Int = R.layout.activity_splash
 
@@ -43,11 +43,11 @@ class SplashActivity : BaseActivity() {
 
         btn_create_account.setOnClickListener {
             // Choose authentication providers
-            val providers = arrayListOf(
-                    AuthUI.IdpConfig.GoogleBuilder().build()
-                    )
-
-//            // Create and launch sign-in intent
+//            val providers = arrayListOf(
+//                    AuthUI.IdpConfig.GoogleBuilder().build()
+//                    )
+//
+////            // Create and launch sign-in intent
 //            startActivityForResult(
 //                    AuthUI.getInstance()
 //                            .createSignInIntentBuilder()
@@ -55,8 +55,13 @@ class SplashActivity : BaseActivity() {
 //                            .build(),
 //                    RC_SIGN_IN)
 
-//            createAccountActivity(this)
-            createAccountDetailsActivity(this)
+            createAccountActivity(this)
+            finish()
+        }
+
+        btn_login.setOnClickListener {
+            createAccountActivity(this, true)
+            finish()
         }
     }
 
@@ -90,7 +95,7 @@ class customAdapter(val context: Context, val onboardingDetails: Array<OnBoardin
         val layout = inflater.inflate(R.layout.layout_pager, collection, false) as ViewGroup
         layout.findViewById<TextView>(R.id.onboarding_title).text = onboardingDetails[position].title
         layout.findViewById<TextView>(R.id.onboarding_body).text = onboardingDetails[position].body
-        layout.findViewById<ImageView>(R.id.onboarding_image).setImageDrawable(context.getDrawable(onboardingDetails[position].resId))
+        layout.findViewById<ImageView>(R.id.onboarding_image).setImageDrawable(ContextCompat.getDrawable(context, onboardingDetails[position].resId))
         collection.addView(layout)
         return layout
     }
