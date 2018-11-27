@@ -68,7 +68,7 @@ class AccountDetailsActivity : BaseActivity() {
 
         btn_update_profile.enable(false)
 
-        btn_update_profile.setOnClickListener { it ->
+        btn_update_profile.setOnClickListener { view ->
             val createAccountViewModel = accountViewModelFactory.create(CreateAccountViewModel::class.java)
 
             val agent = Agent(edit_first_name.text.toString(),
@@ -79,44 +79,46 @@ class AccountDetailsActivity : BaseActivity() {
                     edit_city.text.toString(),
                     spinner_state.selectedItem.toString(),
                     edit_pin_code.text.toString())
-            userId?.let {
-                createAccountViewModel.updateProfile(it, agent)
-                        .startWith(ProfileLoadingState)
-                        .subscribeOn(Schedulers.io())
-                        .observeOn(AndroidSchedulers.mainThread())
-                        .subscribeWith(object: DisposableObserver<ProfileState>(){
-                            override fun onComplete() {
-                                progressar_creation.hide()
-                                dispose()
-                            }
+            createAccountViewModel.updateProfile(userId!!, agent)
+                    .startWith(ProfileLoadingState)
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribeWith(object : DisposableObserver<ProfileState>() {
+                        override fun onComplete() {
+                            progressar_creation.hide()
+                            dispose()
+                        }
 
-                            override fun onNext(state: ProfileState) {
-                                when(state) {
-                                    is ProfileLoadingState -> {
-                                        progressar_creation.show()
-                                    }
+                        override fun onNext(state: ProfileState) {
+                            when (state) {
+                                is ProfileLoadingState -> {
+                                    progressar_creation.show()
+                                }
 
-                                    is ProfileSuccessState -> {
-                                        progressar_creation.hide()
-                                        Toast.makeText(this@AccountDetailsActivity, "Profile Saved, NAvigate to Home Activity!!",
-                                                Toast.LENGTH_LONG).show()
-                                        //todo: naviagte to home activity
-                                        createHomeActivity(this@AccountDetailsActivity)
+                                is ProfileSuccessState -> {
+                                    progressar_creation.hide()
+                                    Toast.makeText(this@AccountDetailsActivity, "Profile Saved, NAvigate to Home Activity!!",
+                                            Toast.LENGTH_LONG).show()
+                                    //todo: naviagte to home activity
+                                    createHomeActivity(this@AccountDetailsActivity)
+                                    finish()
+                                }
 
-                                    }
+                                is ProfileErrorState -> {
+                                    progressar_creation.hide()
+                                    Toast.makeText(this@AccountDetailsActivity, "Profile Save failed with Error ${state.error?.localizedMessage}",
+                                            Toast.LENGTH_LONG).show()
                                 }
                             }
+                        }
 
-                            override fun onError(e: Throwable) {
-                                progressar_creation.hide()
-                                Toast.makeText(this@AccountDetailsActivity,
-                                        "Failed Updating profile with error ${e.localizedMessage}", Toast.LENGTH_LONG).show()
-                            }
+                        override fun onError(e: Throwable) {
+                            progressar_creation.hide()
+                            Toast.makeText(this@AccountDetailsActivity,
+                                    "Failed Updating profile with error ${e.localizedMessage}", Toast.LENGTH_LONG).show()
+                        }
 
-                        })
-            } ?: run {
-                Timber.e("userID is null check it properly")
-            }
+                    })
 
         }
         hideAllEditTextErrors()

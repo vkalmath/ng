@@ -6,6 +6,8 @@ import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.DatabaseReference
 import io.reactivex.Observable
 
+const val AGENTS = "agents"
+const val CUSTOMERS = "customers"
 
 class CreateAccountRepository(private val auth: FirebaseAuth, private val database: DatabaseReference) {
 
@@ -102,7 +104,7 @@ class CreateAccountRepository(private val auth: FirebaseAuth, private val databa
     fun updateProfile(userId: String, agent: Agent): Observable<Agent> {
         return io.reactivex.Observable.create<Agent> { emitter ->
             if (!emitter.isDisposed) {
-                database.child(userId).setValue(agent)
+                database.child(AGENTS).child(userId).setValue(agent)
                         .addOnCompleteListener {
                             emitter.onNext(agent)
                             emitter.onComplete()

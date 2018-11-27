@@ -97,7 +97,7 @@ class AccountCreateActivity() : BaseActivity(){
 
                                     if(!isLogin) {
                                         //todo: storing emailID as key check it later
-                                        createAccountDetailsActivity(this@AccountCreateActivity, state.user?.email!!)
+                                        createAccountDetailsActivity(this@AccountCreateActivity, state.user?.uid!!)
 
                                         finish()
                                     } else {
