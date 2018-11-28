@@ -37,9 +37,9 @@
             android:maxLines="1"
             android:singleLine="true"
             android:textAlignment="viewStart"
-            android:textColor="@color/primaryColor"
-            android:textColorHint="@color/primaryLightColor"
-            android:textSize="20sp"
+            android:textColor="@color/colorBlack"
+            android:textColorHint="@color/colorMediumGray"
+            android:textSize="15sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -58,6 +58,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/email_layout">
+
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edit_pwd"
             style="@style/nayagadi_edit_text_login"
@@ -70,14 +71,13 @@
             android:maxLines="1"
             android:singleLine="true"
             android:textAlignment="viewStart"
-            android:textColor="@color/primaryColor"
-            android:textColorHint="@color/primaryLightColor"
-            android:textSize="20sp"
+            android:textColor="@color/colorBlack"
+            android:textColorHint="@color/colorMediumGray"
+            android:textSize="15sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-             />
+            app:layout_constraintTop_toTopOf="parent" />
     </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -86,38 +86,38 @@
         style="@style/nayagadi_button_normal"
         android:layout_height="40dp"
         android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="32dp"
-        android:layout_marginBottom="16dp"
         android:text="@string/create"
-        app:layout_constraintBottom_toTopOf="@+id/btn_forgot_pwd"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/progressar_creation" />
 
     <Button
         android:id="@+id/btn_forgot_pwd"
         style="@style/nayagadi_button_tranparent"
+        android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="32dp"
-        android:layout_marginBottom="8dp"
         android:text="@string/forgot_passowrd"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/text_view_t_and_c"
         android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_update" />
 
     <TextView
         android:id="@+id/text_view_t_and_c"
         android:layout_width="0dp"
-        android:layout_height="53dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="32dp"
-        android:layout_marginBottom="32dp"
         android:text="@string/tandc"
         android:textColor="@color/colorDarkGray"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_forgot_pwd" />
 
     <TextView
         android:id="@+id/textview_valid_email"
@@ -126,7 +126,7 @@
         android:layout_marginStart="32dp"
         android:text="@string/valid_email"
         android:textColor="@color/btn_danger"
-        android:textSize="14sp"
+        android:textSize="10sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/email_layout" />
 
@@ -135,6 +135,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
+        android:textSize="10sp"
         android:text="@string/valid_pwd"
         android:textColor="@color/btn_danger"
         app:layout_constraintStart_toStartOf="parent"
@@ -160,10 +161,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="24dp"
-        android:layout_marginBottom="24dp"
         android:visibility="invisible"
-        app:layout_constraintBottom_toTopOf="@+id/btn_update"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textview_error" />
 </androidx.constraintlayout.widget.ConstraintLayout>

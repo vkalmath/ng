@@ -25,21 +25,19 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:minHeight="800dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent">
 
             <Spinner
                 android:id="@+id/spinner_state"
-                style="@style/Platform.Widget.AppCompat.Spinner"
+                style="@style/SpinnerTheme"
                 android:layout_width="161dp"
-                android:layout_height="46dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="32dp"
-                android:layout_marginEnd="32dp"
-                android:entries="@array/states"
+                android:layout_height="38dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="24dp"
 
-                app:layout_constraintEnd_toEndOf="parent"
+                android:entries="@array/states"
+                app:layout_constraintBottom_toBottomOf="@+id/city_layout"
                 app:layout_constraintStart_toEndOf="@+id/city_layout"
                 app:layout_constraintTop_toBottomOf="@+id/ifsc_code_layout" />
 
@@ -47,9 +45,9 @@
                 android:id="@+id/textview_valid_state"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
                 android:text="@string/valid_state"
-                android:textColor="@color/primaryDarkColor"
+                android:textColor="@color/colorRed"
+                android:textSize="10dp"
                 app:layout_constraintStart_toStartOf="@+id/spinner_state"
                 app:layout_constraintTop_toBottomOf="@+id/spinner_state" />
 
@@ -58,9 +56,9 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
-                android:layout_marginTop="32dp"
+                android:layout_marginTop="24dp"
                 android:layout_marginEnd="32dp"
-                android:textColorHint="@color/primaryLightColor"
+                android:textColorHint="@color/colorMediumGray"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/account_number_layout">
@@ -77,9 +75,9 @@
                     android:maxLines="1"
                     android:singleLine="true"
                     android:textAlignment="viewStart"
-                    android:textColor="@color/primaryColor"
-                    android:textColorHint="@color/primaryLightColor"
-                    android:textSize="20sp"
+                    android:textColor="@color/colorBlack"
+                    android:textColorHint="@color/colorMediumGray"
+                    android:textSize="15sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
@@ -93,6 +91,7 @@
                 android:layout_marginStart="32dp"
                 android:text="@string/valid_ifsc"
                 android:textColor="@color/btn_danger"
+                android:textSize="10dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/ifsc_code_layout" />
 
@@ -103,6 +102,7 @@
                 android:layout_marginStart="32dp"
                 android:text="@string/valid_account"
                 android:textColor="@color/btn_danger"
+                android:textSize="10dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/account_number_layout" />
 
@@ -111,9 +111,9 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
-                android:layout_marginTop="32dp"
+                android:layout_marginTop="24dp"
                 android:layout_marginEnd="32dp"
-                android:textColorHint="@color/primaryLightColor"
+                android:textColorHint="@color/colorMediumGray"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/phone_number_layout">
@@ -130,9 +130,9 @@
                     android:maxLines="1"
                     android:singleLine="true"
                     android:textAlignment="viewStart"
-                    android:textColor="@color/primaryColor"
-                    android:textColorHint="@color/primaryLightColor"
-                    android:textSize="20sp"
+                    android:textColor="@color/colorBlack"
+                    android:textColorHint="@color/colorMediumGray"
+                    android:textSize="15sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
@@ -142,10 +142,10 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/city_layout"
                 android:layout_width="171dp"
-                android:layout_height="48dp"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
-                android:layout_marginTop="32dp"
-                android:textColorHint="@color/primaryLightColor"
+                android:layout_marginTop="24dp"
+                android:textColorHint="@color/colorMediumGray"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/ifsc_code_layout">
 
@@ -161,9 +161,9 @@
                     android:maxLines="1"
                     android:singleLine="true"
                     android:textAlignment="viewStart"
-                    android:textColor="@color/primaryColor"
-                    android:textColorHint="@color/primaryLightColor"
-                    android:textSize="20sp"
+                    android:textColor="@color/colorBlack"
+                    android:textColorHint="@color/colorMediumGray"
+                    android:textSize="15sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
@@ -175,12 +175,12 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
-                android:layout_marginTop="32dp"
+                android:layout_marginTop="8dp"
                 android:layout_marginEnd="32dp"
-                android:textColorHint="@color/primaryLightColor"
+                android:textColorHint="@color/colorMediumGray"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/city_layout">
+                app:layout_constraintTop_toBottomOf="@+id/textview_valid_state">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edit_pin_code"
@@ -194,9 +194,9 @@
                     android:maxLines="1"
                     android:singleLine="true"
                     android:textAlignment="viewStart"
-                    android:textColor="@color/primaryColor"
-                    android:textColorHint="@color/primaryLightColor"
-                    android:textSize="20sp"
+                    android:textColor="@color/colorBlack"
+                    android:textColorHint="@color/colorMediumGray"
+                    android:textSize="15sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
@@ -209,7 +209,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
                 android:text="@string/valid_pin_code"
-                android:textColor="@color/primaryDarkColor"
+                android:textColor="@color/colorRed"
+                android:textSize="10dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/pin_code_layout" />
 
@@ -219,7 +220,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
                 android:text="@string/valid_city"
-                android:textColor="@color/primaryDarkColor"
+                android:textColor="@color/colorRed"
+                android:textSize="10dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/city_layout" />
 
@@ -229,7 +231,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
                 android:text="@string/valid_phone"
-                android:textColor="@color/primaryDarkColor"
+                android:textColor="@color/colorRed"
+                android:textSize="10dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/phone_number_layout" />
 
@@ -239,7 +242,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
                 android:text="@string/valid_fn"
-                android:textColor="@color/primaryDarkColor"
+                android:textColor="@color/colorRed"
+                android:textSize="10dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/first_name_layout" />
 
@@ -249,7 +253,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
                 android:text="@string/invalid_ln"
-                android:textColor="@color/primaryDarkColor"
+                android:textColor="@color/colorRed"
+                android:textSize="10dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/last_name_layout" />
 
@@ -260,7 +265,7 @@
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="32dp"
-                android:textColorHint="@color/primaryLightColor"
+                android:textColorHint="@color/colorMediumGray"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
@@ -277,9 +282,9 @@
                     android:maxLines="1"
                     android:singleLine="true"
                     android:textAlignment="viewStart"
-                    android:textColor="@color/primaryColor"
-                    android:textColorHint="@color/primaryLightColor"
-                    android:textSize="20sp"
+                    android:textColor="@color/colorBlack"
+                    android:textColorHint="@color/colorMediumGray"
+                    android:textSize="15sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
@@ -291,9 +296,9 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
-                android:layout_marginTop="32dp"
+                android:layout_marginTop="24dp"
                 android:layout_marginEnd="32dp"
-                android:textColorHint="@color/primaryLightColor"
+                android:textColorHint="@color/colorMediumGray"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/first_name_layout">
@@ -309,9 +314,9 @@
                     android:maxLines="1"
                     android:singleLine="true"
                     android:textAlignment="viewStart"
-                    android:textColor="@color/primaryColor"
-                    android:textColorHint="@color/primaryLightColor"
-                    android:textSize="20sp"
+                    android:textColor="@color/colorBlack"
+                    android:textColorHint="@color/colorMediumGray"
+                    android:textSize="15sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
@@ -323,9 +328,9 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
-                android:layout_marginTop="32dp"
+                android:layout_marginTop="24dp"
                 android:layout_marginEnd="32dp"
-                android:textColorHint="@color/primaryLightColor"
+                android:textColorHint="@color/colorMediumGray"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/last_name_layout">
@@ -342,9 +347,9 @@
                     android:maxLines="1"
                     android:singleLine="true"
                     android:textAlignment="viewStart"
-                    android:textColor="@color/primaryColor"
-                    android:textColorHint="@color/primaryLightColor"
-                    android:textSize="20sp"
+                    android:textColor="@color/colorBlack"
+                    android:textColorHint="@color/colorMediumGray"
+                    android:textSize="15sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
@@ -356,13 +361,13 @@
                 style="@style/nayagadi_button_normal"
                 android:layout_height="40dp"
                 android:layout_marginStart="32dp"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="16dp"
                 android:layout_marginEnd="32dp"
                 android:text="@string/update"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/pin_code_layout" />
+                app:layout_constraintTop_toBottomOf="@+id/textview_valid_pin_code" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 

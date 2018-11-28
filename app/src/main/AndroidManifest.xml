@@ -29,7 +29,8 @@
         <activity
             android:name=".MainActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/BalanceTheme"></activity>
+            android:theme="@style/BalanceTheme"
+            android:windowSoftInputMode="stateVisible|adjustResize"></activity>
         <activity
             android:name=".onboarding.SplashActivity"
             android:screenOrientation="portrait">
@@ -41,10 +42,12 @@
         </activity>
         <activity
             android:name=".onboarding.AccountCreateActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateVisible|adjustResize" />
         <activity
             android:name=".onboarding.AccountDetailsActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateVisible|adjustResize" />
         <activity android:name=".home.HomeActivity"></activity>
     </application>
 
